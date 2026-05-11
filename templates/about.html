@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - AI Driver Monitoring</title>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+<style>
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Body */
+body {
+    background: #f9f6f2;
+    color: #f8f8f2;
+    min-height: 100vh;
+}
+/* Top Navigation */
+nav {
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+nav .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+nav .logo img {
+    width: 100px;
+    height: 55px;
+    border-radius: 8px;
+    margin: 5px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+    transition: 0.3s;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+nav ul li a:hover {
+    background-color: #4facfe;
+    color: white;
+}
+
+/* Container */
+.container {
+    max-width: 1000px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    padding: 40px;
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    color: #4facfe;
+    font-size: 28px;
+}
+
+.header .back-btn {
+    text-decoration: none;
+    background: #4facfe;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.header .back-btn:hover {
+    background: #3a91e8;
+}
+
+/* Intro */
+.intro {
+    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #2d2d44;
+}
+
+/* Features grid */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.feature-card {
+    background-color: #f9f6f2;
+    padding: 20px;
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.5);
+}
+
+.feature-card i {
+    font-size: 28px;
+    color: #4facfe;
+    margin-bottom: 12px;
+}
+
+.feature-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #38385c;
+}
+
+.feature-card p {
+    font-size: 14px;
+    color: #2d2d44;
+}
+
+/* Quotes / taglines */
+.quotes {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.quotes p {
+    font-size: 16px;
+    margin-bottom: 12px;
+    font-style: italic;
+    color: #4facfe;
+}
+
+/* Responsive */
+@media(max-width: 600px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
+</style>
+</head>
+<body>
+
+    <!-- Navbar -->
+<nav>
+    <div class="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="AI Robot">
+    </div>
+    <ul>
+        <!-- <li><a href="{{ url_for('video') }}"><i class="fas fa-video"></i> Live Video</a></li> -->
+        <li><a href="{{ url_for('home_back') }}"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="/live_feed"><i class="fas fa-video"></i>Live Feed</a></li>
+        <li><a href="{{ url_for('team') }}"><i class="fas fa-users"></i> Team</a></li>
+        <li><a href="{{ url_for('logs') }}"><i class="fas fa-table"></i> Logs</a></li>
+        <li><a href="{{ url_for('about') }}"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+</nav>
+
+
+<div class="container">
+
+    <!-- Header -->
+    <div class="header">
+        <h1>About Our AI Driver Monitoring System</h1>
+    </div>
+
+    <!-- Intro -->
+    <div class="intro">
+        Driving safely goes beyond staying awake. Our AI-powered system monitors multiple indicators in real time—detecting drowsiness, distracted behavior, and potential hazards—so you stay alert and in control on every journey.
+    </div>
+
+    <!-- Features -->
+    <div class="features">
+        <div class="feature-card">
+            <i class="fas fa-eye"></i>
+            <h3>Eye Closure Detection (EAR)</h3>
+            <p>Monitors blink rate and eye closure to identify signs of fatigue before they become dangerous.</p>
+        </div>
+
+        <div class="feature-card">
+            <i class="fas fa-tired"></i>
+            <h3>Yawn Detection (MAR)</h3>
+            <p>Detects yawns to catch early signs of tiredness, alerting drivers instantly.</p>
+        </div>
+
+        <div class="feature-card">
+            <i class="fas fa-head-side-mask"></i>
+            <h3>Head Tilt Monitoring</h3>
+            <p>Tracks abnormal head movements, like nodding or tilting, that indicate drowsiness or inattention.</p>
+        </div>
+
+        <div class="feature-card">
+            <i class="fas fa-mobile-alt"></i>
+            <h3>Phone Usage Detection</h3>
+            <p>Recognizes when the driver is using a phone, helping reduce distracted driving incidents.</p>
+        </div>
+
+        <div class="feature-card">
+            <i class="fas fa-user-slash"></i>
+            <h3>Face Not Detected Alerts</h3>
+            <p>Ensures the driver’s face is in frame; alerts trigger if the driver is slouched, looking away, or absent.</p>
+        </div>
+
+        <div class="feature-card">
+            <i class="fas fa-clock"></i>
+            <h3>Real-Time Monitoring</h3>
+            <p>Our system tracks eye closure, yawning, and head movements in real time, ensuring drivers get immediate alerts when fatigue is detected.</p>
+        </div>
+
+        <div class="feature-card">
+            <i class="fas fa-robot"></i>
+            <h3>AI-Powered Accuracy</h3>
+            <p>Using advanced computer vision algorithms, our AI distinguishes between normal behavior and dangerous drowsiness patterns with high reliability.</p>
+        </div>
+
+        <div class="feature-card">
+            <i class="fas fa-bell"></i>
+            <h3>Instant Alerts</h3>
+            <p>Audible and visual notifications keep drivers aware, helping them take timely breaks and avoid accidents.</p>
+        </div>
+
+        <div class="feature-card">
+            <i class="fas fa-tachometer-alt"></i>
+            <h3>User-Friendly Dashboard</h3>
+            <p>All features, live video feeds, and monitoring tools are accessible from an intuitive dashboard designed for quick insights.</p>
+        </div>
+    </div>
+
+    <!-- Quotes -->
+    <div class="quotes">
+        <p>“Eyes, head, phone—AI watches it all.”</p>
+        <p>“Detect fatigue, prevent accidents.”</p>
+        <p>“Stay alert, stay alive.”</p>
+    </div>
+
+</div>
+
+</body>
+</html>

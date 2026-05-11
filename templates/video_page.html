@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Driver Monitoring - Live Video</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0a192f,#112240);
+    min-height:100vh;
+    color:white;
+}
+/* Top Navigation */
+nav {
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+nav .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+nav .logo img {
+    width: 100px;
+    height: 55px;
+    border-radius: 8px;
+    margin: 5px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+    transition: 0.3s;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+nav ul li a:hover {
+    background-color: #4facfe;
+    color: white;
+}
+/* ================= MAIN CONTENT ================= */
+.main{
+    padding:80px 60px;
+    text-align:center;
+}
+
+.video-container{
+    display:inline-block;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(10px);
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.4);
+}
+
+.video-container img{
+    width:640px;
+    max-width:100%;
+    border-radius:15px;
+}
+
+.button{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 25px;
+    border-radius:25px;
+    background:linear-gradient(to right,#4facfe,#00f2fe);
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.button:hover{
+    transform:scale(1.05);
+}
+
+@media(max-width:900px){
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+    }
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+    .main{
+        padding:40px 20px;
+    }
+    .video-container img{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<div class="navbar">
+    <div class="logo">AI Driver Monitoring</div>
+
+    <div class="nav-links">
+        <a href="{{ url_for('dashboard') }}">Home</a>
+        <a href="{{ url_for('model_code') }}">Model Code</a>
+        <a href="{{ url_for('video_feed') }}">Live Video</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</div>
+
+<!-- ================= MAIN CONTENT ================= -->
+<div class="main">
+    <h2>Live Driver Monitoring</h2>
+
+    <div class="video-container">
+        <img src="{{ url_for('video_feed') }}" width="800">
+    </div>
+
+    <br>
+    <a href="{{ url_for('stop') }}" class="button">Stop Camera</a>
+</div>
+
+</body>
+</html>

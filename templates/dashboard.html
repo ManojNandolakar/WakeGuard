@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pVfD3YF7ku/df/..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Body */
+body {
+    min-height: 100vh;
+    background-color: #f9f6f2; /* Soft cream */
+    color: #333;
+}
+
+/* Top Navigation */
+nav {
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+nav .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+nav .logo img {
+    width: 100px;
+    height: 55px;
+    border-radius: 8px;
+    margin: 5px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+    transition: 0.3s;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+nav ul li a:hover {
+    background-color: #4facfe;
+    color: white;
+}
+
+/* Main container */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 20px;
+    background: #ffffff; /* White card */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    gap: 30px;
+}
+
+/* Left side (Text & Sections) */
+.container .text {
+    flex: 1;
+}
+
+.container .text h1 {
+    font-size: 34px;
+    margin-bottom: 15px;
+    color: #1a1c6b; /* Dark Blue */
+}
+
+.container .text p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Dashboard Cards */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    flex: 1 1 calc(50% - 20px);
+    background-color: #f1f5f9; /* Light gray-blue */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+.card h3 {
+    color: #1a1c6b;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.card p {
+    color: #555;
+    font-size: 14px;
+}
+
+/* Right side image */
+.container .image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.container .image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+    height: 90%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.info-box{
+    width:60%;
+    margin:auto;
+    padding:20px;
+    background:#ffffff;
+    color:#333;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    font-family:Arial, sans-serif;
+}
+
+.info-box h2{
+    text-align:center;
+    margin-bottom:15px;
+    color:#1a4b84;
+}
+
+.video-box{
+    width:60%;
+    margin:20px auto;
+    background:#ffffff;
+    padding:15px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+.video-box video{
+    width:100%;
+    border-radius:10px;
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+    .container {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 30px 20px;
+    }
+    .cards {
+        flex-direction: column;
+    }
+    .card {
+        width: 100%;
+    }
+    .container .image img {
+        max-width: 300px;
+        margin-bottom: 20px;
+    }
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+    <div class="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="AI Robot">
+    </div>
+    <ul>
+        <!-- <li><a href="{{ url_for('video') }}"><i class="fas fa-video"></i> Live Video</a></li> -->
+        <li><a href="{{ url_for('home_back') }}"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="/live_feed"><i class="fas fa-video"></i>Live Feed</a></li>
+        <li><a href="{{ url_for('team') }}"><i class="fas fa-users"></i> Team</a></li>
+        <li><a href="{{ url_for('logs') }}"><i class="fas fa-table"></i> Logs</a></li>
+        <li><a href="{{ url_for('about') }}"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+</nav>
+
+<!-- Main Container -->
+<div class="container">
+    <!-- Left side -->
+    <div class="info-box">
+    <h2>AI Driver Drowsiness Detection</h2>
+    <ul>
+        <li><b>Real-Time Monitoring</b> – Tracks the driver’s eyes, face, and head movements continuously using the camera.</li>
+        
+        <li><b>Fatigue Detection</b> – Detects drowsiness using Eye Aspect Ratio (EAR) and Mouth Aspect Ratio (MAR).</li>
+        
+        <li><b>Instant Alerts</b> – Triggers an alarm immediately when signs of fatigue are detected.</li>
+        
+        <li><b>AI-Powered Analysis</b> – Uses computer vision algorithms to analyze driver behavior accurately.</li>
+        
+        <li><b>Accident Prevention</b> – Helps reduce the risk of road accidents caused by driver fatigue.</li>
+        
+        <li><b>Live Dashboard</b> – Displays real-time monitoring and system status directly on the dashboard.</li>
+    </ul>
+</div>
+
+    <!-- Right side image -->
+    <div class="image">
+        <img src="{{ url_for('static', filename='images/login_img.png') }}" alt="AI Robot">
+    </div>
+</div>
+
+<div class="video-box">
+    <h1>Nigth vision view</h1>
+    <video width="100%" controls>
+        <source src="{{ url_for('static', filename='images/night.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+</body>
+</html>

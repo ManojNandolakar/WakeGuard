@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Team</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background-color:#f9f6f2;
+    color:#333;
+}
+
+/* Top Navigation */
+nav {
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+nav .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+nav .logo img {
+    width: 100px;
+    height: 55px;
+    border-radius: 8px;
+    margin: 5px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+    transition: 0.3s;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+nav ul li a:hover {
+    background-color: #4facfe;
+    color: white;
+}
+/* Title */
+.title{
+    text-align:center;
+    margin:50px 0 20px;
+}
+
+.title h1{
+    font-size:36px;
+    color:#1a1c6b;
+}
+
+/* Team Section */
+.team-container{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto 80px;
+}
+
+/* Row Layout */
+.team-row{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-bottom:40px;
+    flex-wrap:wrap;
+}
+
+.team-card{
+    background:#ffffff;
+    width:260px;
+    border-radius:20px;
+    padding:25px 20px;
+    text-align:center;
+    box-shadow:0 12px 25px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.team-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 35px rgba(0,0,0,0.15);
+}
+
+.team-card img{
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:15px;
+    border:4px solid #4facfe;
+}
+
+.team-card h3{
+    font-size:20px;
+    color:#1a1c6b;
+    margin-bottom:6px;
+}
+
+.role{
+    font-weight:600;
+    color:#4facfe;
+    font-size:14px;
+    margin-bottom:6px;
+}
+
+.leader-badge{
+    display:inline-block;
+    background:#1a1c6b;
+    color:white;
+    font-size:12px;
+    padding:4px 10px;
+    border-radius:20px;
+    margin-bottom:10px;
+}
+
+.team-card p{
+    font-size:14px;
+    color:#555;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .team-row{
+        flex-direction:column;
+        align-items:center;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+    <div class="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="AI Robot">
+    </div>
+    <ul>
+        <!-- <li><a href="{{ url_for('video') }}"><i class="fas fa-video"></i> Live Video</a></li> -->
+        <li><a href="{{ url_for('home_back') }}"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="/live_feed"><i class="fas fa-video"></i>Live Feed</a></li>
+        <li><a href="{{ url_for('team') }}"><i class="fas fa-users"></i> Team</a></li>
+        <li><a href="{{ url_for('logs') }}"><i class="fas fa-table"></i> Logs</a></li>
+        <li><a href="{{ url_for('about') }}"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+</nav>
+
+
+<!-- Title -->
+<div class="title">
+    <h1>Meet Our Team</h1>
+</div>
+
+<!-- Team Members -->
+<div class="team-container">
+
+    <!-- Row 1 (1 Member) -->
+    <div class="team-row">
+        <div class="team-card">
+            <img src="{{ url_for('static', filename='images/armaan.jpeg') }}" alt="Armaan">
+            <h3>Armaan Altaf Jakati</h3>
+            <p class="role">Government Polytechnic </p>
+            <p class="role">Computer Science & ENGG</p>
+            <p class="role">2nd year</p>
+        </div>
+
+    <!-- Row 2 (2 Members) -->
+        <div class="team-card">
+            <img src="{{ url_for('static', filename='images/manoj.png') }}" alt="Manoj">
+            <h3>Manoj R Nandolakar</h3>
+            <p class="role">Government Polytechnic </p>
+            <p class="role">Computer Science & ENGG</p>
+            <p class="role">2nd year</p>
+        </div>  
+    </div>
+
+</div>
+
+</body>
+</html>

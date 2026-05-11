@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Driver Logs</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<style>
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+font-family:Arial;
+background:#f9f6f2;
+text-align:center;
+}
+
+/* Top Navigation */
+nav {
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+nav .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+nav .logo img {
+    width: 100px;
+    height: 55px;
+    border-radius: 8px;
+    margin: 5px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+    transition: 0.3s;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+nav ul li a:hover {
+    background-color: #4facfe;
+    color: white;
+}
+
+table{
+margin:auto;
+border-collapse:collapse;
+width:85%;
+background:white;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+th,td{
+padding:12px;
+border:1px solid #ddd;
+}
+
+th{
+background:#1a4b84;
+color:white;
+}
+
+tr:nth-child(even){
+background:#f2f2f2;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav>
+    <div class="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="AI Robot">
+    </div>
+    <ul>
+        <!-- <li><a href="{{ url_for('video') }}"><i class="fas fa-video"></i> Live Video</a></li> -->
+        <li><a href="{{ url_for('home_back') }}"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="/live_feed"><i class="fas fa-video"></i>Live Feed</a></li>
+        <li><a href="{{ url_for('team') }}"><i class="fas fa-users"></i> Team</a></li>
+        <li><a href="{{ url_for('logs') }}"><i class="fas fa-table"></i> Logs</a></li>
+        <li><a href="{{ url_for('about') }}"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+</nav>
+
+
+<h1>Driver Monitoring Logs</h1>
+
+<table>
+
+<tr>
+<th>Username</th>
+<th>Login Date</th>
+<th>Login Time</th>
+<th>Logout Date</th>
+<th>Logout Time</th>
+<th>Driving Time(s)</th>
+<th>Blink</th>
+<th>Eye Closed</th>
+<th>Yawn</th>
+<th>No Face</th>
+</tr>
+
+{% for row in data %}
+<tr>
+<td>{{row["username"]}}</td>
+<td>{{row["login_date"]}}</td>
+<td>{{row["login_time"]}}</td>
+<td>{{row["logout_date"]}}</td>
+<td>{{row["logout_time"]}}</td>
+<td>{{row["drive_time"]}}</td>
+<td>{{row["blink_count"]}}</td>
+<td>{{row["eye_closed_count"]}}</td>
+<td>{{row["yawn_count"]}}</td>
+<td>{{row["no_face_count"]}}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+
+</body>
+</html>
