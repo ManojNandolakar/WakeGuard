@@ -195,3 +195,6 @@ AI-Driver-Monitoring-System/
 ├── static/
 │
 └── README.md
+
+
+this project is created in macbook if it is not working in windows then code or change  according to the windows
